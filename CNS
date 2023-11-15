@@ -1,0 +1,19 @@
+import numpy as np
+
+class ConstantNoiseSampler:
+    def __init__(self, noise_dim):
+        # Initialize a constant noise vector
+        self.noise_vector = np.random.randn(noise_dim)
+
+    def sample_noise(self):
+        # Return the same noise vector every time
+        return self.noise_vector
+
+# Example usage
+noise_dim = 512  # Dimension of the noise vector
+noise_sampler = ConstantNoiseSampler(noise_dim)
+
+# Sample noise at different steps (it will be the same)
+noise_step_1 = noise_sampler.sample_noise()
+noise_step_2 = noise_sampler.sample_noise()
+# noise_step_1 and noise_step_2 will be identical
