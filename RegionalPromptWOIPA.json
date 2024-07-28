@@ -1,0 +1,1873 @@
+{
+  "last_node_id": 74,
+  "last_link_id": 158,
+  "nodes": [
+    {
+      "id": 40,
+      "type": "Note",
+      "pos": [
+        476,
+        161
+      ],
+      "size": {
+        "0": 210,
+        "1": 58
+      },
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "properties": {
+        "text": ""
+      },
+      "widgets_values": [
+        ""
+      ],
+      "color": "#432",
+      "bgcolor": "#653"
+    },
+    {
+      "id": 15,
+      "type": "LoadImage",
+      "pos": [
+        -1449.5274000359718,
+        147.50088984766145
+      ],
+      "size": {
+        "0": 315,
+        "1": 314
+      },
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            15
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "New Project (16) (1).jpg",
+        "image"
+      ]
+    },
+    {
+      "id": 46,
+      "type": "VAELoader",
+      "pos": [
+        267,
+        739
+      ],
+      "size": {
+        "0": 315,
+        "1": 58
+      },
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [
+            109,
+            110,
+            136
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAELoader"
+      },
+      "widgets_values": [
+        "SDXLLowerMemoryUse_v10.safetensors"
+      ]
+    },
+    {
+      "id": 48,
+      "type": "Image Resize",
+      "pos": [
+        611,
+        458
+      ],
+      "size": {
+        "0": 315,
+        "1": 178
+      },
+      "flags": {},
+      "order": 12,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 112
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            113
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Image Resize"
+      },
+      "widgets_values": [
+        "resize",
+        "true",
+        "bicubic",
+        2,
+        768,
+        1024
+      ]
+    },
+    {
+      "id": 7,
+      "type": "CLIPTextEncode",
+      "pos": [
+        1059,
+        476
+      ],
+      "size": {
+        "0": 425.27801513671875,
+        "1": 180.6060791015625
+      },
+      "flags": {},
+      "order": 16,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 100
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 133,
+          "widget": {
+            "name": "text"
+          }
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            149,
+            156
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "frame, Mundane Reality, Generic, undetailed and simplistic, A flat, monotonous landscape, devoid of any interesting features. Static, Flat, stiff poses, with minimal effort put into the rendering of subjects and environment. Absence of people, faces, eyes, robots, or landscapes, with a simplistic style. Brightly lit, harsh lighting, unimpressive, low detail, Simplistic and cartoonish style, cartoon, anime, or comic style, paint, blurry,"
+      ]
+    },
+    {
+      "id": 64,
+      "type": "VAEDecode",
+      "pos": [
+        2369,
+        838
+      ],
+      "size": {
+        "0": 210,
+        "1": 50
+      },
+      "flags": {},
+      "order": 28,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 151
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 136
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            138
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 62,
+      "type": "PresetText|pysssss",
+      "pos": [
+        1030,
+        648
+      ],
+      "size": {
+        "0": 210,
+        "1": 82
+      },
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "text",
+          "type": "STRING",
+          "links": [
+            133
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {},
+      "widgets_values": [
+        "mundane creative",
+        "Manage"
+      ]
+    },
+    {
+      "id": 56,
+      "type": "PrimitiveNode",
+      "pos": [
+        2386,
+        1060
+      ],
+      "size": {
+        "0": 210,
+        "1": 82.73540496826172
+      },
+      "flags": {},
+      "order": 4,
+      "mode": 4,
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            125,
+            139
+          ],
+          "widget": {
+            "name": "negative"
+          },
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Run widget replace on values": false
+      },
+      "widgets_values": [
+        "frame, Mundane Reality, Generic, undetailed and simplistic, A flat, monotonous landscape, devoid of any interesting features. Static, Flat, stiff poses, with minimal effort put into the rendering of subjects and environment. Absence of people, faces, eyes, robots, or landscapes, with a simplistic style. Brightly lit, harsh lighting, unimpressive, low detail, Simplistic and cartoonish style, cartoon, anime, or comic style, paint, blurry,"
+      ]
+    },
+    {
+      "id": 72,
+      "type": "Automatic CFG",
+      "pos": [
+        1525,
+        1038
+      ],
+      "size": {
+        "0": 320,
+        "1": 82
+      },
+      "flags": {},
+      "order": 24,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 147
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            146
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Automatic CFG"
+      },
+      "widgets_values": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": 8,
+      "type": "VAEDecode",
+      "pos": [
+        2360,
+        -475
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 29,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "samples",
+          "type": "LATENT",
+          "link": 158
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 110
+        }
+      ],
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            123
+          ],
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEDecode"
+      }
+    },
+    {
+      "id": 45,
+      "type": "VAEEncode",
+      "pos": [
+        971,
+        162
+      ],
+      "size": {
+        "0": 210,
+        "1": 46
+      },
+      "flags": {},
+      "order": 18,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "pixels",
+          "type": "IMAGE",
+          "link": 113
+        },
+        {
+          "name": "vae",
+          "type": "VAE",
+          "link": 109
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "VAEEncode"
+      }
+    },
+    {
+      "id": 14,
+      "type": "MaskFromRGBCMYBW+",
+      "pos": [
+        -1078,
+        208
+      ],
+      "size": {
+        "0": 315,
+        "1": 294
+      },
+      "flags": {},
+      "order": 10,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "image",
+          "type": "IMAGE",
+          "link": 15
+        }
+      ],
+      "outputs": [
+        {
+          "name": "red",
+          "type": "MASK",
+          "links": [
+            127
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "green",
+          "type": "MASK",
+          "links": [
+            121
+          ],
+          "shape": 3,
+          "slot_index": 1
+        },
+        {
+          "name": "blue",
+          "type": "MASK",
+          "links": [
+            120
+          ],
+          "shape": 3,
+          "slot_index": 2
+        },
+        {
+          "name": "cyan",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "magenta",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "yellow",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        },
+        {
+          "name": "black",
+          "type": "MASK",
+          "links": [],
+          "shape": 3
+        },
+        {
+          "name": "white",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "MaskFromRGBCMYBW+"
+      },
+      "widgets_values": [
+        0.15,
+        0.15,
+        0.15
+      ]
+    },
+    {
+      "id": 71,
+      "type": "KSampler",
+      "pos": [
+        2029,
+        940
+      ],
+      "size": {
+        "0": 320,
+        "1": 474
+      },
+      "flags": {},
+      "order": 26,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 146
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 148
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 149
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 150
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            151
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSampler"
+      },
+      "widgets_values": [
+        383971413331141,
+        "randomize",
+        16,
+        6,
+        "dpmpp_sde_gpu",
+        "karras",
+        1
+      ]
+    },
+    {
+      "id": 19,
+      "type": "DenseDiffusionAddCondNode",
+      "pos": [
+        -831,
+        -472
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 19,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 99
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 33,
+          "slot_index": 1
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 35,
+          "slot_index": 2
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            115
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DenseDiffusionAddCondNode"
+      },
+      "widgets_values": [
+        1
+      ]
+    },
+    {
+      "id": 58,
+      "type": "EmptyLatentImage",
+      "pos": [
+        1175,
+        244
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            150,
+            157
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "EmptyLatentImage"
+      },
+      "widgets_values": [
+        768,
+        1216,
+        1
+      ]
+    },
+    {
+      "id": 18,
+      "type": "SolidMask",
+      "pos": [
+        -1190,
+        -427
+      ],
+      "size": {
+        "0": 315,
+        "1": 106
+      },
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": [
+            35
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "SolidMask"
+      },
+      "widgets_values": [
+        1,
+        768,
+        1216
+      ]
+    },
+    {
+      "id": 54,
+      "type": "Save Image w/Metadata",
+      "pos": [
+        2684,
+        -416
+      ],
+      "size": {
+        "0": 371.1515197753906,
+        "1": 839.1277465820312
+      },
+      "flags": {},
+      "order": 31,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 123
+        },
+        {
+          "name": "positive",
+          "type": "STRING",
+          "link": 143,
+          "widget": {
+            "name": "positive"
+          }
+        },
+        {
+          "name": "negative",
+          "type": "STRING",
+          "link": 125,
+          "widget": {
+            "name": "negative"
+          }
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Save Image w/Metadata"
+      },
+      "widgets_values": [
+        "%time",
+        "%date_SD",
+        "png",
+        40,
+        10,
+        "level4XL_alphaV04.safetensors",
+        "ddpm",
+        "ddim_uniform",
+        "frame, Mundane Reality, Generic, undetailed and simplistic, A flat, monotonous landscape, devoid of any interesting features. Static, Flat, stiff poses, with minimal effort put into the rendering of subjects and environment. Absence of people, faces, eyes, robots, or landscapes, with a simplistic style. Brightly lit, harsh lighting, unimpressive, low detail, Simplistic and cartoonish style, cartoon, anime, or comic style, paint, blurry,",
+        "frame, Mundane Reality, Generic, undetailed and simplistic, A flat, monotonous landscape, devoid of any interesting features. Static, Flat, stiff poses, with minimal effort put into the rendering of subjects and environment. Absence of people, faces, eyes, robots, or landscapes, with a simplistic style. Brightly lit, harsh lighting, unimpressive, low detail, Simplistic and cartoonish style, cartoon, anime, or comic style, paint, blurry,",
+        691002188170925,
+        753,
+        1209,
+        true,
+        100,
+        2,
+        "%Y-%m-%d-%H%M%S"
+      ]
+    },
+    {
+      "id": 10,
+      "type": "DenseDiffusionApplyNode",
+      "pos": [
+        1204,
+        -434
+      ],
+      "size": {
+        "0": 218.0396270751953,
+        "1": 49.7765007019043
+      },
+      "flags": {},
+      "order": 23,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 26
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            147,
+            152
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            148,
+            155
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DenseDiffusionApplyNode"
+      }
+    },
+    {
+      "id": 16,
+      "type": "DenseDiffusionAddCondNode",
+      "pos": [
+        293,
+        -420
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 22,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 20
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 18
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 127
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            26
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DenseDiffusionAddCondNode"
+      },
+      "widgets_values": [
+        1
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    },
+    {
+      "id": 51,
+      "type": "DenseDiffusionAddCondNode",
+      "pos": [
+        825,
+        -330
+      ],
+      "size": {
+        "0": 320,
+        "1": 100
+      },
+      "flags": {},
+      "order": 20,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 115
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 116
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 120
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            119
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DenseDiffusionAddCondNode"
+      },
+      "widgets_values": [
+        1
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 11,
+      "type": "DenseDiffusionAddCondNode",
+      "pos": [
+        -311,
+        -338
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 21,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 119
+        },
+        {
+          "name": "conditioning",
+          "type": "CONDITIONING",
+          "link": 14
+        },
+        {
+          "name": "mask",
+          "type": "MASK",
+          "link": 121
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            20
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "DenseDiffusionAddCondNode"
+      },
+      "widgets_values": [
+        1
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 41,
+      "type": "LoraLoader",
+      "pos": [
+        -70,
+        462
+      ],
+      "size": {
+        "0": 315,
+        "1": 126
+      },
+      "flags": {},
+      "order": 11,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 94
+        },
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 95
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            99
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            96,
+            97,
+            98,
+            100,
+            118
+          ],
+          "shape": 3,
+          "slot_index": 1
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoraLoader"
+      },
+      "widgets_values": [
+        "SDXL/sinfully_stylish_SDXL.safetensors",
+        0.7000000000000001,
+        1
+      ]
+    },
+    {
+      "id": 4,
+      "type": "CheckpointLoaderSimple",
+      "pos": [
+        -279,
+        767
+      ],
+      "size": {
+        "0": 315,
+        "1": 98
+      },
+      "flags": {},
+      "order": 7,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            94
+          ],
+          "slot_index": 0
+        },
+        {
+          "name": "CLIP",
+          "type": "CLIP",
+          "links": [
+            95
+          ],
+          "slot_index": 1
+        },
+        {
+          "name": "VAE",
+          "type": "VAE",
+          "links": [],
+          "slot_index": 2
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CheckpointLoaderSimple"
+      },
+      "widgets_values": [
+        "theAraminta_ev2.safetensors"
+      ]
+    },
+    {
+      "id": 63,
+      "type": "Save Image w/Metadata",
+      "pos": [
+        2636,
+        769
+      ],
+      "size": {
+        "0": 431.9913635253906,
+        "1": 1062.9693603515625
+      },
+      "flags": {},
+      "order": 30,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "images",
+          "type": "IMAGE",
+          "link": 138
+        },
+        {
+          "name": "positive",
+          "type": "STRING",
+          "link": 144,
+          "widget": {
+            "name": "positive"
+          }
+        },
+        {
+          "name": "negative",
+          "type": "STRING",
+          "link": 139,
+          "widget": {
+            "name": "negative"
+          }
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Save Image w/Metadata"
+      },
+      "widgets_values": [
+        "%time",
+        "%date_SD",
+        "png",
+        40,
+        10,
+        "level4XL_alphaV04.safetensors",
+        "ddpm",
+        "ddim_uniform",
+        "frame, Mundane Reality, Generic, undetailed and simplistic, A flat, monotonous landscape, devoid of any interesting features. Static, Flat, stiff poses, with minimal effort put into the rendering of subjects and environment. Absence of people, faces, eyes, robots, or landscapes, with a simplistic style. Brightly lit, harsh lighting, unimpressive, low detail, Simplistic and cartoonish style, cartoon, anime, or comic style, paint, blurry,",
+        "frame, Mundane Reality, Generic, undetailed and simplistic, A flat, monotonous landscape, devoid of any interesting features. Static, Flat, stiff poses, with minimal effort put into the rendering of subjects and environment. Absence of people, faces, eyes, robots, or landscapes, with a simplistic style. Brightly lit, harsh lighting, unimpressive, low detail, Simplistic and cartoonish style, cartoon, anime, or comic style, paint, blurry,",
+        691002188170925,
+        753,
+        1209,
+        true,
+        100,
+        2,
+        "%Y-%m-%d-%H%M%S"
+      ]
+    },
+    {
+      "id": 73,
+      "type": "Automatic CFG",
+      "pos": [
+        1604,
+        -575
+      ],
+      "size": {
+        "0": 315,
+        "1": 82
+      },
+      "flags": {},
+      "order": 25,
+      "mode": 4,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 152
+        }
+      ],
+      "outputs": [
+        {
+          "name": "MODEL",
+          "type": "MODEL",
+          "links": [
+            154
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "Automatic CFG"
+      },
+      "widgets_values": [
+        true,
+        true
+      ]
+    },
+    {
+      "id": 74,
+      "type": "KSamplerAdvanced",
+      "pos": [
+        2018,
+        -377
+      ],
+      "size": {
+        "0": 421.72265625,
+        "1": 961.208984375
+      },
+      "flags": {},
+      "order": 27,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "model",
+          "type": "MODEL",
+          "link": 154
+        },
+        {
+          "name": "positive",
+          "type": "CONDITIONING",
+          "link": 155
+        },
+        {
+          "name": "negative",
+          "type": "CONDITIONING",
+          "link": 156
+        },
+        {
+          "name": "latent_image",
+          "type": "LATENT",
+          "link": 157
+        }
+      ],
+      "outputs": [
+        {
+          "name": "LATENT",
+          "type": "LATENT",
+          "links": [
+            158
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "KSamplerAdvanced"
+      },
+      "widgets_values": [
+        "enable",
+        593283231433611,
+        "randomize",
+        8,
+        4,
+        "dpmpp_sde",
+        "karras",
+        0,
+        12,
+        "disable"
+      ]
+    },
+    {
+      "id": 20,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -1050,
+        -280
+      ],
+      "size": {
+        "0": 258.1534423828125,
+        "1": 54
+      },
+      "flags": {},
+      "order": 13,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 96,
+          "slot_index": 0
+        },
+        {
+          "name": "text",
+          "type": "STRING",
+          "link": 142,
+          "widget": {
+            "name": "text"
+          },
+          "slot_index": 1
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            33
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "High school hallway bustling with student life, All eyes turn to Stefan\n"
+      ]
+    },
+    {
+      "id": 44,
+      "type": "LoadImage",
+      "pos": [
+        97,
+        874
+      ],
+      "size": {
+        "0": 564.2432250976562,
+        "1": 741.5724487304688
+      },
+      "flags": {},
+      "order": 8,
+      "mode": 0,
+      "outputs": [
+        {
+          "name": "IMAGE",
+          "type": "IMAGE",
+          "links": [
+            112
+          ],
+          "shape": 3,
+          "slot_index": 0
+        },
+        {
+          "name": "MASK",
+          "type": "MASK",
+          "links": null,
+          "shape": 3
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "LoadImage"
+      },
+      "widgets_values": [
+        "00002-1161041101.png",
+        "image"
+      ]
+    },
+    {
+      "id": 12,
+      "type": "CLIPTextEncode",
+      "pos": [
+        -341,
+        -141
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 14,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 97,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            14
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "monster has large sharp teeth and sharp sharp claws."
+      ],
+      "color": "#232",
+      "bgcolor": "#353"
+    },
+    {
+      "id": 68,
+      "type": "ImpactWildcardProcessor",
+      "pos": [
+        -1135,
+        -142
+      ],
+      "size": {
+        "0": 663.1998291015625,
+        "1": 277.9357604980469
+      },
+      "flags": {
+        "collapsed": false
+      },
+      "order": 9,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {
+          "name": "STRING",
+          "type": "STRING",
+          "links": [
+            142,
+            143,
+            144
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "ImpactWildcardProcessor"
+      },
+      "widgets_values": [
+        "Two women are posing for a photo in front of a monster. The monster has large sharp teeth and sharp sharp claws. The women are smiling and looking into the camera. They both have dark brown hair.,Candid disposable camera shot of a girl, natural lighting, unposed and spontaneous moment, grainy texture and slight blur, capturing the essence of everyday life, urban background with bustling city elements, vintage aesthetic.",
+        "Avant-garde fashion runway, futuristic haute couture, 2000s extravaganza",
+        false,
+        942399492883699,
+        "fixed",
+        "Select the Wildcard to add to the text"
+      ]
+    },
+    {
+      "id": 52,
+      "type": "CLIPTextEncode",
+      "pos": [
+        778,
+        -144
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 17,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 118,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            116
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "The women are smiling and looking into the camera. They both have dark brown hair.,Candid disposable camera shot of a girl, natural lighting, unposed and spontaneous moment, grainy texture and slight blur, capturing the essence of everyday life, urban background with bustling city elements, vintage aesthetic."
+      ],
+      "color": "#223",
+      "bgcolor": "#335"
+    },
+    {
+      "id": 17,
+      "type": "CLIPTextEncode",
+      "pos": [
+        127,
+        -152
+      ],
+      "size": {
+        "0": 400,
+        "1": 200
+      },
+      "flags": {},
+      "order": 15,
+      "mode": 0,
+      "inputs": [
+        {
+          "name": "clip",
+          "type": "CLIP",
+          "link": 98,
+          "slot_index": 0
+        }
+      ],
+      "outputs": [
+        {
+          "name": "CONDITIONING",
+          "type": "CONDITIONING",
+          "links": [
+            18
+          ],
+          "shape": 3,
+          "slot_index": 0
+        }
+      ],
+      "properties": {
+        "Node name for S&R": "CLIPTextEncode"
+      },
+      "widgets_values": [
+        "blood dropping down on the woman, Horror style\n"
+      ],
+      "color": "#322",
+      "bgcolor": "#533"
+    }
+  ],
+  "links": [
+    [
+      14,
+      12,
+      0,
+      11,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      15,
+      15,
+      0,
+      14,
+      0,
+      "IMAGE"
+    ],
+    [
+      18,
+      17,
+      0,
+      16,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      20,
+      11,
+      0,
+      16,
+      0,
+      "MODEL"
+    ],
+    [
+      26,
+      16,
+      0,
+      10,
+      0,
+      "MODEL"
+    ],
+    [
+      33,
+      20,
+      0,
+      19,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      35,
+      18,
+      0,
+      19,
+      2,
+      "MASK"
+    ],
+    [
+      94,
+      4,
+      0,
+      41,
+      0,
+      "MODEL"
+    ],
+    [
+      95,
+      4,
+      1,
+      41,
+      1,
+      "CLIP"
+    ],
+    [
+      96,
+      41,
+      1,
+      20,
+      0,
+      "CLIP"
+    ],
+    [
+      97,
+      41,
+      1,
+      12,
+      0,
+      "CLIP"
+    ],
+    [
+      98,
+      41,
+      1,
+      17,
+      0,
+      "CLIP"
+    ],
+    [
+      99,
+      41,
+      0,
+      19,
+      0,
+      "MODEL"
+    ],
+    [
+      100,
+      41,
+      1,
+      7,
+      0,
+      "CLIP"
+    ],
+    [
+      109,
+      46,
+      0,
+      45,
+      1,
+      "VAE"
+    ],
+    [
+      110,
+      46,
+      0,
+      8,
+      1,
+      "VAE"
+    ],
+    [
+      112,
+      44,
+      0,
+      48,
+      0,
+      "IMAGE"
+    ],
+    [
+      113,
+      48,
+      0,
+      45,
+      0,
+      "IMAGE"
+    ],
+    [
+      115,
+      19,
+      0,
+      51,
+      0,
+      "MODEL"
+    ],
+    [
+      116,
+      52,
+      0,
+      51,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      118,
+      41,
+      1,
+      52,
+      0,
+      "CLIP"
+    ],
+    [
+      119,
+      51,
+      0,
+      11,
+      0,
+      "MODEL"
+    ],
+    [
+      120,
+      14,
+      2,
+      51,
+      2,
+      "MASK"
+    ],
+    [
+      121,
+      14,
+      1,
+      11,
+      2,
+      "MASK"
+    ],
+    [
+      123,
+      8,
+      0,
+      54,
+      0,
+      "IMAGE"
+    ],
+    [
+      125,
+      56,
+      0,
+      54,
+      2,
+      "STRING"
+    ],
+    [
+      127,
+      14,
+      0,
+      16,
+      2,
+      "MASK"
+    ],
+    [
+      133,
+      62,
+      0,
+      7,
+      1,
+      "STRING"
+    ],
+    [
+      136,
+      46,
+      0,
+      64,
+      1,
+      "VAE"
+    ],
+    [
+      138,
+      64,
+      0,
+      63,
+      0,
+      "IMAGE"
+    ],
+    [
+      139,
+      56,
+      0,
+      63,
+      2,
+      "STRING"
+    ],
+    [
+      142,
+      68,
+      0,
+      20,
+      1,
+      "STRING"
+    ],
+    [
+      143,
+      68,
+      0,
+      54,
+      1,
+      "STRING"
+    ],
+    [
+      144,
+      68,
+      0,
+      63,
+      1,
+      "STRING"
+    ],
+    [
+      146,
+      72,
+      0,
+      71,
+      0,
+      "MODEL"
+    ],
+    [
+      147,
+      10,
+      0,
+      72,
+      0,
+      "MODEL"
+    ],
+    [
+      148,
+      10,
+      1,
+      71,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      149,
+      7,
+      0,
+      71,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      150,
+      58,
+      0,
+      71,
+      3,
+      "LATENT"
+    ],
+    [
+      151,
+      71,
+      0,
+      64,
+      0,
+      "LATENT"
+    ],
+    [
+      152,
+      10,
+      0,
+      73,
+      0,
+      "MODEL"
+    ],
+    [
+      154,
+      73,
+      0,
+      74,
+      0,
+      "MODEL"
+    ],
+    [
+      155,
+      10,
+      1,
+      74,
+      1,
+      "CONDITIONING"
+    ],
+    [
+      156,
+      7,
+      0,
+      74,
+      2,
+      "CONDITIONING"
+    ],
+    [
+      157,
+      58,
+      0,
+      74,
+      3,
+      "LATENT"
+    ],
+    [
+      158,
+      74,
+      0,
+      8,
+      0,
+      "LATENT"
+    ]
+  ],
+  "groups": [
+    {
+      "title": "Omost DenseDiffusion",
+      "bounding": [
+        -318,
+        -485,
+        3077,
+        651
+      ],
+      "color": "#b06634",
+      "font_size": 24,
+      "locked": false
+    }
+  ],
+  "config": {},
+  "extra": {
+    "ds": {
+      "scale": 0.49500000000000693,
+      "offset": [
+        -246.2001318725571,
+        494.7497481893819
+      ]
+    },
+    "info": {
+      "name": "workflow",
+      "author": "",
+      "description": "",
+      "version": "1",
+      "created": "2024-06-05T16:06:42.169Z",
+      "modified": "2024-06-06T03:05:01.076Z",
+      "software": "ComfyUI"
+    }
+  },
+  "version": 0.4
+}
