@@ -1,1 +1,16 @@
 For ComfyUI
+ComfyUICNS - Workflow Archive
+
+This repository contains a collection of ComfyUI workflows designed for various purposes, such as image detailing, style adaptation, and prompt manipulation. The aim is to provide an organized archive of workflows that achieve efficient and detailed results in different scenarios.
+
+Included Files
+
+	•	CNS: Core configuration files for general workflow management.
+	•	ControlNet++withFaceDetailer.json: Workflow for integrating ControlNet++ with enhanced face detailing.
+	•	Hand Detailer.json: Focused on improving the details of hands in generated outputs.
+	•	IPAdapterStyleRestartFlorence.json: Style adaptation workflow for refined outputs.
+	•	InpaintMaxPro.json: Workflow optimized for high-quality inpainting tasks.
+	•	RegionalPromptWOIPA.json: Regional prompt workflow without input-image-based adaptations.
+	•	preComposition.json: Designed for pre-compositional planning in outputs.
+	•	promptswitchIPAdapterjson.json: Workflow for switching prompts with an IPAdapter integration.
+	•	temperatureSD: Configuration for controlling temperature-related aspects in outputs.
